@@ -1,0 +1,33 @@
+/* Taken from StackOverFlow
+ * http://stackoverflow.com/questions/299495/java-swing-how-to-add-an-image-to-a-jpanel
+ * 12/2/2012 v0.0.1 Class Created from Template at URL
+ * v 0.0.2 Modification to file path for image
+ * v 0.1.2 Class Finished (Modify File Path it needed)
+ */
+package hogwartsNHobos;
+
+import java.awt.*;
+import java.awt.image.*;
+import java.io.*;
+import javax.imageio.*;
+import javax.swing.*;
+
+@SuppressWarnings("serial")
+public class ImagePanel extends JPanel{
+
+    private BufferedImage image;
+
+    public ImagePanel(String imagePath) {
+       try {                
+          image = ImageIO.read(new File("C://Resources//"+ imagePath));
+       } catch (IOException ex) {
+            // handle exception...
+       }
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(image, 0, 70, null); // see javadoc for more info on the parameters            
+    }
+}
